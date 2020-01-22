@@ -1,26 +1,45 @@
 import React from "react";
-import logo, { ReactComponent } from "./logo.svg";
 import "./App.css";
+let i = 0;
+let toDoArray: string[] = [];
 
 class App extends React.Component {
   handleSubmit = (event: any) => {
     event.preventDefault();
-    alert("Your username is: " + this.input.value);
+
+    toDoArray[i] = this.input.value;
+    i++;
+    console.log(toDoArray);
   };
+
   input: any;
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">username</label>
-        <input
-          type="text"
-          name="username"
-          ref={input => (this.input = input)}
-        />
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="toDo">Tasks: </label>
+          <input type="text" name="toDo" ref={input => (this.input = input)} />
+        </form>
+        {/* <ol>
+          {toDoArray.map(task => (
+            <li>{task}</li>
+          ))}
+        </ol> */}
+        {ReptileList()}
+      </div>
     );
   }
+}
+
+function ReptileList() {
+  return (
+    <ol>
+      {toDoArray.map(task => (
+        <li key={task}>{task}</li>
+      ))}
+    </ol>
+  );
 }
 
 export default App;
