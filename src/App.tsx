@@ -19,14 +19,10 @@ class App extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="toDo">Tasks: </label>
-          <input type="text" name="toDo" ref={input => (this.input = input)} />
+          <input type="text" name="name" ref={input => (this.input = input)} />
+          <input type="submit" name="toDo" />
         </form>
-        {/* <ol>
-          {toDoArray.map(task => (
-            <li>{task}</li>
-          ))}
-        </ol> */}
-        {ReptileList()}
+        <ReptileList />
       </div>
     );
   }
@@ -34,11 +30,14 @@ class App extends React.Component {
 
 function ReptileList() {
   return (
-    <ol>
-      {toDoArray.map(task => (
-        <li key={task}>{task}</li>
-      ))}
-    </ol>
+    <div>
+      <ol>
+        {toDoArray.map(task => (
+          <li key={task}>{task}</li>
+        ))}
+      </ol>
+      <p>here</p>
+    </div>
   );
 }
 
